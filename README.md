@@ -1,6 +1,6 @@
 # ToDoApp
 
-### This project is created with React Native and Firebase. It's a todo application.
+### This project is created with React Native and Firebase. It's a todo application developed with Expo and it performs all CRUD operations using Firebase.
 
 ## Features
 - User can create new todos
