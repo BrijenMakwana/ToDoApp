@@ -12,7 +12,7 @@
 - Firebase Firestore
 
 ## How to use this Project
-First of you need to clone this project. Then open it on any text editor or IDE of your choice. After that just type below command.
+First of all you need to clone this project. Then open it on any text editor or IDE of your choice. After that just type below command.
 ```
 npm i
 ```
