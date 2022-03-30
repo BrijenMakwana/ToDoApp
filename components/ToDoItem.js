@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import React, { useState, useEffect } from "react";
 import CheckBox from "./CheckBox";
 import { db, doc, deleteDoc, updateDoc } from "../Config";
@@ -6,11 +6,13 @@ import { MaterialIcons } from "@expo/vector-icons";
 
 const ToDoItem = (props) => {
   const [isChecked, setIsChecked] = useState(props.isChecked);
+  const [todoTitle, setTodoTitle] = useState(props.title);
 
   // update isChecked property
   const updateIsChecked = async () => {
     await updateDoc(doc(db, "ToDos", props.id), {
       isChecked: isChecked,
+      title: todoTitle,
     });
   };
 
@@ -32,7 +34,14 @@ const ToDoItem = (props) => {
         isChecked={isChecked}
         onPress={() => setIsChecked(!isChecked)}
       />
-      <Text style={styles.text}>{props.title}</Text>
+      <TextInput
+        placeholder="ToDo"
+        value={todoTitle}
+        style={styles.text}
+        onChangeText={(text) => setTodoTitle(text)}
+        onSubmitEditing={updateIsChecked}
+      />
+
       <Pressable onPress={deleteShoppingItem}>
         <MaterialIcons name="delete" size={24} color="#FD5D5D" />
       </Pressable>
